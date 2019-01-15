@@ -1,0 +1,14 @@
+[package]
+name = "similarity-hash-py"
+version = "0.1.0"
+authors = ["Matt Maisel <matthew.maisel@gmail.com>"]
+edition = "2018"
+
+[lib]
+name = "fuzzy"
+crate-type = ["cdylib"]
+
+[dependencies]
+similarity-hash = { path = "../", version = "0.1.0" }
+pyo3 = { version = "0.6.0-alpha.1", features = ["extension-module"] }
+# cpython = "0.2"

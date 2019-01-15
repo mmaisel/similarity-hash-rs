@@ -1,0 +1,19 @@
+[package]
+name = "similarity-hash"
+version = "0.1.0"
+authors = ["Matt Maisel <matthew.maisel@gmail.com>"]
+edition = "2018"
+
+[lib]
+name = "fuzzy"
+
+[dev-dependencies]
+criterion = "0.2"
+rand = "0.6"
+
+[[bench]]
+name = "ssdeep_benchmark"
+harness = false
+
+[dependencies]
+bcmp = "0.4.1"

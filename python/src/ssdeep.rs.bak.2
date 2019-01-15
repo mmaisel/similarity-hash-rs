@@ -1,0 +1,37 @@
+use cpython::{PyResult, Python};
+
+use fuzzy::ssdeep::{Signature, SimilarityHash};
+use fuzzy::ssdeep::Hash as _Hash;
+
+
+fn hash(_: Python, string: &str) -> PyResult<String> {
+    let result = match _Hash::hash(string) {
+        Ok(hash) => hash.to_string(),
+        Err(e) => e.to_string()
+    };
+    Ok(result)
+}
+
+
+fn hash_from_file(_: Python, path: &str) -> PyResult<String> {
+    let result = match _Hash::hash_from_file(path) {
+        Ok(hash) => hash.to_string(),
+        Err(e) => e.to_string()
+    };
+    Ok(result)
+}
+
+
+fn compare(_: Python, digest_a: &str, digest_b: &str) -> PyResult<u32> {
+    let hash_a = Signature::from_string(digest_a);
+    let hash_b = Signature::from_string(digest_b);
+    let score = _Hash::compare(&hash_a, &hash_b);
+    Ok(score)
+}
+
+py_module_initializer!(ssdeep, initssdeep, PyInit_ssdeep, |py, m| {
+    m.add(py, "hash", py_fn!(py, hash(string: &str)))?;
+    m.add(py, "hash_from_file", py_fn!(py, hash_from_file(path: &str)))?;
+    m.add(py, "compare", py_fn!(py, compare(digest_a: &str, digest_b: &str)))?;
+    Ok(())
+});
