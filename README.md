@@ -1,4 +1,4 @@
-# fuzzy-hash-rs
+# similarity-hash-rs
 
 This library implements similarity digest hashing algorithms in rust and exposes ffi bindings for python3. 
 
