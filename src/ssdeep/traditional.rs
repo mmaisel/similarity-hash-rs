@@ -5,11 +5,11 @@ const FNV_HASH_PRIME: u32 = 0x01000193;
 const FNV_HASH_INIT: u32 = 0x28021967;
 
 // Traditional Hash, Fowler-Noll-Vo Hash FN
-#[derive(Debug, Clone)]
+#[derive(Clone, Copy)]
 pub struct Hash {
     pub hash: u32,
     pub half_hash: u32,
-    pub digest: Vec<u8>,
+    pub digest: [u8; SPAMSUM_LENGTH as usize],
     pub half_digest: u8,
     pub digest_length: u32,
 }
@@ -19,7 +19,7 @@ impl Hash {
         Hash {
             hash: 0,
             half_hash: 0,
-            digest: vec![0; SPAMSUM_LENGTH as usize],
+            digest: [0; SPAMSUM_LENGTH as usize],
             half_digest: 0,
             digest_length: 0,
         }

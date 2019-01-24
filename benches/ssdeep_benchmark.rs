@@ -22,10 +22,10 @@ fn hash_1m(c: &mut Criterion) {
     c.bench_function("hash rand 1M", move |b| b.iter(|| Hash::hash(&sample)));
 }
 
-fn hash_10m(c: &mut Criterion) {
-    let sample = random_str(10000000);
-    c.bench_function("hash rand 10M", move |b| b.iter(|| Hash::hash(&sample)));
-}
+// fn hash_10m(c: &mut Criterion) {
+//     let sample = random_str(10000000);
+//     c.bench_function("hash rand 10M", move |b| b.iter(|| Hash::hash(&sample)));
+// }
 
 fn hash_from_file(c: &mut Criterion) {
     let sample = random_str(100000);
@@ -51,7 +51,7 @@ criterion_group!(
     benches,
     hash_100k,
     hash_1m,
-    hash_10m,
+    // hash_10m,
     compare,
     hash_from_file
 );

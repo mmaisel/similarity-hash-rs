@@ -19,8 +19,7 @@ setup(
     ],
     packages=["fuzzy"],
     rust_extensions=[
-        # RustExtension("fuzzy.ssdeep", "Cargo.toml", binding=Binding.RustCPython)
-        RustExtension("fuzzy.ssdeep", "Cargo.toml")
+        RustExtension("fuzzy.ssdeep", "Cargo.toml", debug=False)
     ],
     install_requires=install_requires,
     setup_requires=setup_requires,

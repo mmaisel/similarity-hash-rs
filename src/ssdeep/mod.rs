@@ -28,7 +28,7 @@ fn get_base64_char(idx: usize) -> u8 {
 // Context Triggered Piecewise Hashing
 pub struct Hash {
     rolling: rolling::Hash,
-    blocks: Vec<traditional::Hash>,
+    blocks: [traditional::Hash; NUM_BLOCKHASHES],
     start: usize,
     end: usize,
     size: u32,
@@ -38,7 +38,7 @@ impl Hash {
     pub fn new() -> Hash {
         let mut hasher = Hash {
             rolling: rolling::Hash::new(),
-            blocks: vec![traditional::Hash::new(); NUM_BLOCKHASHES],
+            blocks: [traditional::Hash::new(); NUM_BLOCKHASHES],
             start: 0,
             end: 1,
             size: 0,

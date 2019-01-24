@@ -5,7 +5,7 @@ pub struct Hash {
     y: u32,
     z: u32,
     c: u32,
-    window: Vec<u8>,
+    window: [u8; ROLLING_WINDOW_SIZE],
 }
 
 /// Pesudo-random value based on current context of input
@@ -16,7 +16,7 @@ impl Hash {
             y: 0,
             z: 0,
             c: 0,
-            window: vec![0; ROLLING_WINDOW_SIZE],
+            window: [0; ROLLING_WINDOW_SIZE],
         }
     }
 
