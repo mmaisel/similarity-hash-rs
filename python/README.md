@@ -27,7 +27,7 @@ c = ssdeep.hash("path/to/sample.exe")
 
 ## Benchmarks
 
-When benchmarking `libfuzzy` (python-ssdeep) to `similarity-hash-rs` in Python, *the rust implementation is about 2-4x slower on average*. There's still room for optimizations in rust, such as eliminating the use of `Vector`, which allocates on the heap, in traditional and rolling hashes structs.
+When benchmarking `libfuzzy` (python-ssdeep) to `similarity-hash-rs` in Python, *the rust implementation is about 2-4x slower on average*.
 
 ```
 ----------------------------------------------------------------------------------------------------------- benchmark: 12 tests ------------------------------------------------------------------------------------------------------------
